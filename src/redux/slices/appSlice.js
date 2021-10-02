@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { STATUS } from "../global";
+import { STATUS, LIST_LIMIT } from "../global";
+import { mockFetch } from "../utils";
+
+// ========================================================
+// Setup
+// ========================================================
 
 const movieListApi = new Map([
   ["host", "data-imdb1.p.rapidapi.com"],
@@ -20,7 +25,7 @@ const createMovie = function createMovie({ imdb_id, title, release }) {
   return {
     id: imdb_id,
     title,
-    releaseDate: release,
+    releaseDate: Date.parse(release),
     summary: "",
     imgSrc: "",
   };
@@ -33,25 +38,58 @@ const initialState = {
   movieList: [],
 };
 
-const mockData = {
+const mockMovieList = () => ({
   "Movies Upcoming": [
     {
       imdb_id: "tt10838180",
       title: "Movie 01",
-      release: new Date().toLocaleString(),
+      release: "2021-11-10",
     },
     {
       imdb_id: "tt1262426",
       title: "Movie 02",
-      release: new Date().toLocaleString(),
+      release: "2020-10-10",
     },
     {
       imdb_id: "tt4244994",
       title: "Movie 03",
-      release: new Date().toLocaleString(),
+      release: "2021-11-20",
     },
   ],
+});
+
+const mockMovieDetails = () => {
+  const data = [
+    {
+      plot: "Landjaeger short loin ribeye beef ribs shankle, doner spare ribs shoulder ground",
+      image_url: "http://placekitten.com/200/",
+    },
+    {
+      plot: "Jowl pork rump cupim strip steak",
+      image_url: "http://placekitten.com/200/",
+    },
+    {
+      plot: "Kevin pork belly strip steak doner, turkey pork",
+      image_url: "http://placekitten.com/200/",
+    },
+    {
+      plot: "Meatball leberkas shankle cow brisket landjaeger hamburger andouille",
+      image_url: "http://placekitten.com/200/",
+    },
+    {
+      plot: "Pancetta jerky short ribs, kevin frankfurter...",
+      image_url: "http://placekitten.com/200/",
+    },
+  ][Math.round(Math.random(5))];
+
+  return {
+    Data: data,
+  };
 };
+
+// ========================================================
+// Async
+// ========================================================
 
 export const fetchMovieList = createAsyncThunk(
   "app/fetch",
@@ -67,37 +105,51 @@ export const fetchMovieList = createAsyncThunk(
 
       // const data = await response.json();
 
-      const mock = new Promise((resolve) => {
-        setTimeout(() => resolve(mockData), 1000);
-      });
-
-      const data = await mock;
+      const data = await mockFetch(mockMovieList, 500);
+      
       const list = data[movieListApi.get("dataKey")];
+      const listSize = list.length;
 
-      const movieData = list.map((item) => createMovie(item));
+      let movieData = list.map((item) => createMovie(item));
 
-      return Promise.allSettled(
+      // sort by date, ascending order (closest date first)
+      movieData.sort((a, b) => a.releaseDate - b.releaseDate);
+
+      // limiting the output
+      movieData = movieData.slice(0, Math.min(listSize, LIST_LIMIT));
+
+      const finalMovieData = await Promise.allSettled(
         movieData.map(async (item) => {
-          const response = await fetch(movieDetailsApi.get("endpoint") + item.id + '/', {
-            method: "GET",
-            headers: {
-              "x-rapidapi-host": movieDetailsApi.get("host"),
-              "x-rapidapi-key": movieDetailsApi.get("key"),
-            },
-          });
+          // const response = await fetch(`${movieDetailsApi.get("endpoint")}${item.id}/`, {
+          //   method: "GET",
+          //   headers: {
+          //     "x-rapidapi-host": movieDetailsApi.get("host"),
+          //     "x-rapidapi-key": movieDetailsApi.get("key"),
+          //   },
+          // });
 
-          const data = await response.json();
+          // const data = await response.json();
+
+          const data = await mockFetch(mockMovieDetails, 1000);
+
           const details = data[movieDetailsApi.get("dataKey")];
 
-          const imgSrc = details.image_url.indexOf('https://') === -1 ? '' : details.image_url;
+          // taking care of some API discrepancies
+          const imgSrc =
+            details.image_url.indexOf("http") === -1
+              ? ""
+              : details.image_url;
 
           return {
             ...item,
             summary: details.plot,
-            imgSrc: imgSrc
-          }
+            imgSrc: imgSrc,
+          };
         })
       );
+
+      // TODO: handle rejected values
+      return finalMovieData;
     } catch (err) {
       let error = err;
 
@@ -109,6 +161,10 @@ export const fetchMovieList = createAsyncThunk(
     }
   }
 );
+
+// ========================================================
+// Slice
+// ========================================================
 
 export const appSlice = createSlice({
   name: "app",
@@ -133,7 +189,7 @@ export const appSlice = createSlice({
 
     [fetchMovieList.fulfilled]: (state, action) => {
       state.status = STATUS.idle;
-      state.movieList = action.payload.map(item => item.value);
+      state.movieList = action.payload.map((item) => item.value);
     },
   },
 });

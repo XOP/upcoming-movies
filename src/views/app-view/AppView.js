@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { MovieCard } from "../../components/features/movie-card/MovieCard";
+
 import { STATUS } from "../../redux/global";
 
 import {
@@ -29,13 +31,12 @@ const AppView = () => {
         !!movieList.length &&
         movieList.map((item) => {
           return (
-            <article key={item.id}>
-              <h2>{item.title}</h2>
-              {!!item.imgSrc && (
-                <img src={item.imgSrc} height="128px" alt="Movie preview" />
-              )}
-              <code>{item.summary}</code>
-            </article>
+            <MovieCard
+              key={item.id}
+              title={item.title}
+              imgSrc={item.imgSrc}
+              summary={item.summary}
+            />
           );
         })}
 

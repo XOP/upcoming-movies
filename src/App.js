@@ -9,6 +9,11 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router basename={window.location.pathname || ""}>
+        <header>
+          <h2>
+            <u>UPCOMING MOVIES</u>
+          </h2>
+        </header>
         <AppRouter />
       </Router>
     </Provider>

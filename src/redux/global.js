@@ -1,8 +1,8 @@
-const STATUS = {
+export const STATUS = {
   init: 'init',
   idle: 'idle',
   loading: 'loading',
   error: 'error'
 };
 
-export { STATUS };
+export const LIST_LIMIT = 13;
