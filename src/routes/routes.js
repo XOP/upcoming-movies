@@ -3,5 +3,4 @@ const routeNames = {
   ITEM: "/movie/:movie",
 };
 
-
 export { routeNames };

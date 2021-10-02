@@ -1,42 +1,21 @@
-import { Route, Switch, Link, useParams } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+
+import { AppView } from "../views/app-view/AppView";
+import { MovieView } from "../views/movie-view/MovieView";
+
 import { routeNames } from "./routes";
-
-const MovieItem = () => {
-  let { movie } = useParams();
-
-  return <div>Movie Item: {movie}</div>;
-};
-
-const MovieList = () => {
-  return (
-    <section>
-      <div>Movie List</div>
-
-      <Link to={routeNames.LIST}>Back to List</Link>
-      <br />
-      <br />
-      <Link to='/movie/id12'>Movie 12</Link>
-      <br />
-      <Link to='/movie/id13'>Movie 13</Link>
-      
-      <hr />
-
-      <Switch>
-        <Route path={routeNames.ITEM} exact>
-          <MovieItem />
-        </Route>
-      </Switch>
-    </section>
-  );
-};
 
 const AppRouter = () => {
   return (
-    <Switch>
-      <Route path={routeNames.LIST}>
-        <MovieList />
-      </Route>
-    </Switch>
+    <Route path={routeNames.LIST}>
+      <AppView />
+
+      <Switch>
+        <Route path={routeNames.ITEM} exact>
+          <MovieView />
+        </Route>
+      </Switch>
+    </Route>
   );
 };
 
