@@ -1,0 +1,27 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.wrapper {
+  position: relative;
+  z-index: 2;
+
+  margin: 1rem;
+  height: calc(100vh - 2rem);
+  width: calc(100vw - 2rem);
+}

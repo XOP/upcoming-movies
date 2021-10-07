@@ -10,7 +10,7 @@ const store = configureStore({
     movie: movieReducer,
     [api.reducerPath]: api.reducer,
   },
-  middleware: (gDM) => gDM().concat(api.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
 });
 
 export default store;
