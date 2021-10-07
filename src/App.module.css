@@ -1,0 +1,10 @@
+.app {
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 800px) {
+  .app {
+    width: 800px;
+    margin: 0 auto;
+  }
+}

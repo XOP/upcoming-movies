@@ -1,6 +1,8 @@
-const routeNames = {
+export const routeNames = {
   LIST: "/",
   ITEM: "/movie/:movie",
 };
 
-export { routeNames };
+export const createRoute = (root, id) => {
+  return `${root.split(':')[0]}${id}`;
+}

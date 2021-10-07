@@ -1,5 +1,10 @@
+.root {
+  color: #fefefe;
+  text-decoration: none;
+}
+
 .content {
-  padding: 1rem;
+  padding: 1rem 0;
 
   background-color: rgba(255,255,255,0);
   transition: all .15s cubic-bezier(0.075, 0.82, 0.165, 1);

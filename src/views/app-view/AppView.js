@@ -33,15 +33,14 @@ const AppView = () => {
           return (
             <MovieCard
               key={item.id}
+              id={item.id}
               title={item.title}
               imgSrc={item.imgSrc}
               summary={item.summary}
+              releaseDate={item.releaseDate}
             />
           );
         })}
-
-      <hr />
-      <Link to="/movie/id12">Movie 12</Link>
     </section>
   );
 };

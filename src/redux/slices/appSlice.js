@@ -3,6 +3,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { STATUS, LIST_LIMIT } from "../global";
 import { mockFetch } from "../utils";
 
+
+//// movie view component
+//// use RTK Query with hooks for the movie Modal
+//// sticky header component
+//// footer component
+
+
 // ========================================================
 // Setup
 // ========================================================
@@ -21,7 +28,7 @@ const movieDetailsApi = new Map([
   ["dataKey", "Data"],
 ]);
 
-const createMovie = function createMovie({ imdb_id, title, release }) {
+const createMovieSummary = function createMovieSummary({ imdb_id, title, release }) {
   return {
     id: imdb_id,
     title,
@@ -110,7 +117,7 @@ export const fetchMovieList = createAsyncThunk(
       const list = data[movieListApi.get("dataKey")];
       const listSize = list.length;
 
-      let movieData = list.map((item) => createMovie(item));
+      let movieData = list.map((item) => createMovieSummary(item));
 
       // sort by date, ascending order (closest date first)
       movieData.sort((a, b) => a.releaseDate - b.releaseDate);

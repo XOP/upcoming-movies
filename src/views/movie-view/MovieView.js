@@ -1,9 +1,23 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
+
+// import { useGetMovieQuery } from "../../redux/slices/movieApi";
 
 const MovieView = () => {
+  
   let { movie } = useParams();
+  let { state } = useLocation();
 
-  return <section>Movie: {movie}</section>;
+  const {
+    title,
+    releaseDate
+   } = state;
+
+  return (
+    <section id={movie}>
+      <h1>{title}</h1>
+      <div>Release date: {releaseDate}</div>
+    </section>
+  );
 };
 
 export { MovieView };

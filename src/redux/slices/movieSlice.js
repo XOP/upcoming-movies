@@ -2,10 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { STATUS } from "../global";
 
+// ========================================================
+// Setup
+// ========================================================
+
 const initialState = {
   status: STATUS.idle,
-  data: {},
+  error: null,
 };
+
+// ========================================================
+// Slice
+// ========================================================
 
 export const movieSlice = createSlice({
   name: "movie",
