@@ -1,6 +1,9 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useParams, useLocation, useHistory } from "react-router-dom";
 
+import { routeNames } from "../../routes/routes";
 import { MovieModal } from "../../components/features/movie-modal/MovieModal";
+import { modalToggle } from "../../redux/slices/appSlice";
 
 import { useGetMovieQuery } from "../../redux/slices/movieApi";
 
@@ -12,6 +15,14 @@ const MovieView = () => {
 
   const { data = {}, isLoading, isError } = useGetMovieQuery(movie);
   const { length, contentRating, imgSrc, summary, castStars, trailer } = data;
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleModalClose = () => {
+    dispatch(modalToggle(false));
+    history.replace(routeNames.LIST);
+  }
 
   return (
     <MovieModal
@@ -27,6 +38,7 @@ const MovieView = () => {
       isLoading={isLoading}
       isError={isError}
       isOpen={true}
+      onClose={handleModalClose}
     />
   );
 };

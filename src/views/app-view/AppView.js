@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import { routeNames, createRoute } from "../../routes/routes";
+
 import { MovieCard } from "../../components/features/movie-card/MovieCard";
 
 import { STATUS } from "../../redux/global";
 
 import {
   fetchMovieList,
+  modalToggle,
   movieListSelector,
   statusSelector,
 } from "../../redux/slices/appSlice";
@@ -37,6 +40,15 @@ const AppView = () => {
               imgSrc={item.imgSrc}
               summary={item.summary}
               releaseDate={item.releaseDate}
+              linkTo={{
+                pathname: createRoute(routeNames.ITEM, item.id),
+                state: {
+                  id: item.id,
+                  title: item.title,
+                  releaseDate: item.releaseDate,
+                },
+              }}
+              onClick={() => dispatch(modalToggle(true))}
             />
           );
         })}

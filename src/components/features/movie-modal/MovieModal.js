@@ -13,16 +13,20 @@ const MovieModal = ({
   isLoading,
   isError,
   isOpen,
+  onClose = () => null
 }) => {
   // ===============================
   console.log("trailer data");
   console.log(trailer);
   // ===============================
 
+  if (!isOpen) return null;
+
   return (
     <div className={styles.root}>
       <div className={styles.overlay}></div>
       <section id={id} className={styles.wrapper}>
+        <div className={styles.close} onClick={onClose}>Close</div>
 
         {isError && <div>SOMETHING WENT OOPS. HOLD YOUR POPCORN.</div>}
 

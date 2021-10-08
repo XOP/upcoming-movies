@@ -170,7 +170,19 @@ export const appSlice = createSlice({
   name: "app",
   initialState,
 
-  reducers: {},
+  reducers: {
+    modalToggle(state, action) {
+      state.isModal = action.payload;
+
+      const body = document.querySelector('body');
+
+      if (action.payload) {
+        body?.classList.add('no-scroll');
+      } else {
+        body?.classList.remove('no-scroll');
+      }
+    },
+  },
 
   extraReducers: {
     [fetchMovieList.pending]: (state, action) => {
@@ -194,9 +206,12 @@ export const appSlice = createSlice({
   },
 });
 
+export const { modalToggle } = appSlice.actions;
+
 export const statusSelector = (state) => state.app.status;
 export const errorSelector = (state) => state.app.error;
 export const isModalSelector = (state) => state.app.isModal;
 export const movieListSelector = (state) => state.app.movieList;
+export const modalOpenSelector = (state) => state.app.isModal;
 
 export default appSlice.reducer;
