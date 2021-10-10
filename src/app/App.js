@@ -1,9 +1,10 @@
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import AppRouter from "./routes/AppRouter";
+import { Heading } from 'wombat';
 
-import store from "./redux/configure";
+import AppRouter from "../routes/AppRouter";
+import store from "../redux/configure";
 
 import styles from './App.module.css';
 
@@ -13,9 +14,9 @@ const App = () => {
       <Router basename={window.location.pathname || ""}>
         <div className={styles.app}> 
           <header>
-            <h2>
-              <u>UPCOMING MOVIES</u>
-            </h2>
+            <Heading level='2'>
+              UPCOMING MOVIES
+            </Heading>
           </header>
           <AppRouter />
         </div>

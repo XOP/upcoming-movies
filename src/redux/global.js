@@ -5,4 +5,4 @@ export const STATUS = {
   error: 'error'
 };
 
-export const LIST_LIMIT = 13;
+export const LIST_LIMIT = 5;

@@ -11,14 +11,14 @@ const movieListApi = new Map([
   [API_HOST, "data-imdb1.p.rapidapi.com"],
   [API_EP, "https://data-imdb1.p.rapidapi.com/movie/order/upcoming/"],
   [API_KEY, process.env.REACT_APP_RAPIDAPI_KEY],
-  [DATA_KEY, "Movies Upcoming"],
+  [DATA_KEY, "results"],
 ]);
 
 const movieDetailsApi = new Map([
   [API_HOST, "data-imdb1.p.rapidapi.com"],
   [API_EP, "https://data-imdb1.p.rapidapi.com/movie/id/"],
   [API_KEY, process.env.REACT_APP_RAPIDAPI_KEY],
-  [DATA_KEY, "Data"],
+  [DATA_KEY, "results"],
 ]);
 
 const createMovieSummary = function createMovieSummary({ imdb_id, title, release }) {
