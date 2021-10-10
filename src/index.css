@@ -1,20 +1,42 @@
+@import './theme.css';
+
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/fonts/Barlow-SemiBold.woff") format("woff");
+}
+
 html {
   background: #101010;
-  font-size: 16px;
+  font-size: 3.2vw;
+}
+
+@media screen and (min-width: 641px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+/* make responsive fonts work with icons */
+button[class] svg {
+  width: calc(var(--space-one) * var(--line-height-n) - 2px);
+  height: calc(var(--space-one) * var(--line-height-n) - 2px);
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  color: #fefefe;
-  line-height: 1.6;
-  font-size: 1rem;
+  color: var(--color-light-temp);
+  line-height: var(--line-height-n);
+  font-size: var(--font-size-n);
 }
 
 body.no-scroll {

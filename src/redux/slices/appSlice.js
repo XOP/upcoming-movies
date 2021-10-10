@@ -39,7 +39,7 @@ const initialState = {
 };
 
 const mockMovieList = () => ({
-  "Movies Upcoming": [
+  "results": [
     {
       imdb_id: "tt10838180",
       title: "Movie 01",
@@ -83,7 +83,7 @@ const mockMovieDetails = () => {
   ][Math.round(Math.random(5))];
 
   return {
-    Data: data,
+    results: data,
   };
 };
 

@@ -32,6 +32,13 @@ const AppView = () => {
       {appStatus === STATUS.idle &&
         !!movieList.length &&
         movieList.map((item) => {
+          const parsedReleaseDate = new Date(item.releaseDate).toLocaleString('en-GB', {
+            weekday: undefined,
+            month: 'long',
+            day: '2-digit',
+            year: 'numeric'
+          });
+
           return (
             <MovieCard
               key={item.id}
@@ -39,13 +46,13 @@ const AppView = () => {
               title={item.title}
               imgSrc={item.imgSrc}
               summary={item.summary}
-              releaseDate={item.releaseDate}
+              releaseDate={parsedReleaseDate}
               linkTo={{
                 pathname: createRoute(routeNames.ITEM, item.id),
                 state: {
                   id: item.id,
                   title: item.title,
-                  releaseDate: item.releaseDate,
+                  releaseDate: parsedReleaseDate,
                 },
               }}
               onClick={() => dispatch(modalToggle(true))}

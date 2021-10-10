@@ -1,0 +1,35 @@
+:root {
+  --space-eighth: 0.125rem;
+  --space-quarter: 0.25rem;
+  --space-half: 0.5rem;
+  --space-three-quarters: 0.75rem;
+  --space-one: 1rem;
+  --space-one-and-half: 1.5rem;
+  --space-two: 2rem;
+  --space-three: 3rem;
+  --space-four: 4rem;
+
+  --font-size-s: 0.6rem;
+  --font-size-m: 0.75rem;
+  --font-size-n: 1rem;
+  --font-size-l: 1.33rem;
+  --font-size-xl: 1.77rem;
+  --font-size-2xl: 2.4rem;
+  --font-size-3xl: 3.2rem;
+  --font-size-4xl: 4.2rem;
+
+  --line-height-s: 1.15;
+  --line-height-n: 1.6;
+
+  --radius-light: 0.125rem;
+  --radius-regular: 0.25rem;
+  --radius-heavy: 0.5rem;
+
+  --border-size-light: 1px;
+  --border-size-regular: 2px;
+  --border-size-heavy: 4px;
+
+  --color-theme-temp: #e3ad0a;
+  --color-dark-temp: #101010;
+  --color-light-temp: #e7e7e7;
+}

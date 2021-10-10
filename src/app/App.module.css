@@ -1,10 +1,10 @@
 .app {
-  padding: 0 1rem;
+  padding: 0 var(--space-one);
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 641px) {
   .app {
-    width: 800px;
+    width: calc(640px - 2 * var(--space-one));
     margin: 0 auto;
   }
 }
