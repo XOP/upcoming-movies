@@ -1,7 +1,7 @@
-import Panel from "wombat/lib/components/panel/Panel";
-import Heading from "wombat/lib/components/heading/Heading";
-import Icon from "wombat/lib/components/icon/Icon";
-import Media from "wombat/lib/components/layout/Media";
+import Panel from "choom/lib/components/panel/Panel";
+import Heading from "choom/lib/components/heading/Heading";
+import Icon from "choom/lib/components/icon/Icon";
+import Media from "choom/lib/components/layout/Media";
 
 import { Video } from "react-feather";
 

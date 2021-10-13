@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "@csstools/normalize.css";
-import "wombat/lib/theme/theme.module.css";
+import "choom/lib/theme/theme.module.css";
 import "./index.css";
 
 import App from "./app/App";

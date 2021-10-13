@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import Hold from "choom/lib/components/layout/Hold";
+import Loader from "choom/lib/components/loader/Loader";
+
 import { routeNames, createRoute } from "../../routes/routes";
 
 import { MovieCard } from "../../components/features/movie-card/MovieCard";
@@ -25,10 +28,8 @@ const AppView = () => {
   const appStatus = useSelector(statusSelector);
 
   return (
-    <section>
-      {(appStatus === STATUS.loading || appStatus === STATUS.init) && (
-        <div>LOADING...</div>
-      )}
+    <Hold>
+      {(appStatus === STATUS.loading || appStatus === STATUS.init) && <Loader />}
       {appStatus === STATUS.idle &&
         !!movieList.length &&
         movieList.map((item) => {
@@ -59,7 +60,7 @@ const AppView = () => {
             />
           );
         })}
-    </section>
+    </Hold>
   );
 };
 

@@ -5,4 +5,4 @@ export const STATUS = {
   error: 'error'
 };
 
-export const LIST_LIMIT = 5;
+export const LIST_LIMIT = process.env.REACT_APP_ITEM_LIMIT || 3;

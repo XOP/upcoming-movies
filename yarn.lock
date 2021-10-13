@@ -3315,6 +3315,16 @@ chokidar@^3.4.1:
   optionalDependencies:
     fsevents "~2.3.1"
 
+choom@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/choom/-/choom-0.0.3.tgz#da1d5b5a8bda44d395bf9a601b1e553116d4bcc2"
+  integrity sha512-yCvv77424AU1ISkwb04bUXvvVWaxUi2qxuDihYhiLuoWD0KTeQr0ZafrJjhmp2BOB6+4fhVaypgox/i/fL9J+Q==
+  dependencies:
+    "@emotion/react" "^11.0.0"
+    nanoid "^3.1.29"
+    prop-types "^15.7.2"
+    react-feather "^2.0.9"
+
 chownr@^1.1.1:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
@@ -11418,14 +11428,6 @@ which@^2.0.1, which@^2.0.2:
   integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
   dependencies:
     isexe "^2.0.0"
-
-"wombat@file:./../wombat/packages/wombat":
-  version "0.0.1"
-  dependencies:
-    "@emotion/react" "^11.0.0"
-    nanoid "^3.1.29"
-    prop-types "^15.7.2"
-    react-feather "^2.0.9"
 
 word-wrap@^1.2.3, word-wrap@~1.2.3:
   version "1.2.3"

@@ -1,4 +1,4 @@
-import Panel from "wombat/lib/components/panel/Panel";
+import Panel from "choom/lib/components/panel/Panel";
 
 import styles from "./Footer.module.css";
 

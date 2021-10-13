@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import Card from "wombat/lib/components/card/Card";
-import Heading from "wombat/lib/components/heading/Heading";
-import Media from "wombat/lib/components/layout/Media";
-import Picture from "wombat/lib/components/picture/Picture";
+import Card from "choom/lib/components/card/Card";
+import Heading from "choom/lib/components/heading/Heading";
+import Media from "choom/lib/components/layout/Media";
+import Picture from "choom/lib/components/picture/Picture";
 
 import styles from "./MovieCard.module.css";
 

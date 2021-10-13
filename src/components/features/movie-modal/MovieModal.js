@@ -1,12 +1,12 @@
-import Heading from "wombat/lib/components/heading/Heading";
-import Hold from "wombat/lib/components/layout/Hold";
-import Icon from "wombat/lib/components/icon/Icon";
-import Loader from "wombat/lib/components/loader/Loader";
-import Media from "wombat/lib/components/layout/Media";
-import Modal from "wombat/lib/components/modal/Modal";
-import Picture from "wombat/lib/components/picture/Picture";
-import Space from "wombat/lib/components/space/Space";
-import Stack from "wombat/lib/components/layout/Stack";
+import Heading from "choom/lib/components/heading/Heading";
+import Hold from "choom/lib/components/layout/Hold";
+import Icon from "choom/lib/components/icon/Icon";
+import Loader from "choom/lib/components/loader/Loader";
+import Media from "choom/lib/components/layout/Media";
+import Modal from "choom/lib/components/modal/Modal";
+import Picture from "choom/lib/components/picture/Picture";
+import Space from "choom/lib/components/space/Space";
+import Stack from "choom/lib/components/layout/Stack";
 
 import { Users, AlertTriangle, Clock } from "react-feather";
 
