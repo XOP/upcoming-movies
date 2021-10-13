@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { STATUS, LIST_LIMIT } from "../global";
-import { mockFetch, API_EP, API_HOST, API_KEY, DATA_KEY } from "../utils";
+import { API_EP, API_HOST, API_KEY, DATA_KEY } from "../utils";
+
+// import { mockFetch } from "../utils";
 
 // ========================================================
 // Setup
@@ -38,54 +40,54 @@ const initialState = {
   movieList: [],
 };
 
-const mockMovieList = () => ({
-  "results": [
-    {
-      imdb_id: "tt10838180",
-      title: "Movie 01",
-      release: "2021-11-10",
-    },
-    {
-      imdb_id: "tt1262426",
-      title: "Movie 02",
-      release: "2020-10-10",
-    },
-    {
-      imdb_id: "tt4244994",
-      title: "Movie 03",
-      release: "2021-11-20",
-    },
-  ],
-});
+// const mockMovieList = () => ({
+//   "results": [
+//     {
+//       imdb_id: "tt10838180",
+//       title: "Movie 01",
+//       release: "2021-11-10",
+//     },
+//     {
+//       imdb_id: "tt1262426",
+//       title: "Movie 02",
+//       release: "2020-10-10",
+//     },
+//     {
+//       imdb_id: "tt4244994",
+//       title: "Movie 03",
+//       release: "2021-11-20",
+//     },
+//   ],
+// });
 
-const mockMovieDetails = () => {
-  const data = [
-    {
-      plot: "Landjaeger short loin ribeye beef ribs shankle, doner spare ribs shoulder ground",
-      image_url: "http://placekitten.com/200/",
-    },
-    {
-      plot: "Jowl pork rump cupim strip steak",
-      image_url: "http://placekitten.com/200/",
-    },
-    {
-      plot: "Kevin pork belly strip steak doner, turkey pork",
-      image_url: "http://placekitten.com/200/",
-    },
-    {
-      plot: "Meatball leberkas shankle cow brisket landjaeger hamburger andouille",
-      image_url: "http://placekitten.com/200/",
-    },
-    {
-      plot: "Pancetta jerky short ribs, kevin frankfurter...",
-      image_url: "http://placekitten.com/200/",
-    },
-  ][Math.round(Math.random(5))];
+// const mockMovieDetails = () => {
+//   const data = [
+//     {
+//       plot: "Landjaeger short loin ribeye beef ribs shankle, doner spare ribs shoulder ground",
+//       image_url: "http://placekitten.com/200/",
+//     },
+//     {
+//       plot: "Jowl pork rump cupim strip steak",
+//       image_url: "http://placekitten.com/200/",
+//     },
+//     {
+//       plot: "Kevin pork belly strip steak doner, turkey pork",
+//       image_url: "http://placekitten.com/200/",
+//     },
+//     {
+//       plot: "Meatball leberkas shankle cow brisket landjaeger hamburger andouille",
+//       image_url: "http://placekitten.com/200/",
+//     },
+//     {
+//       plot: "Pancetta jerky short ribs, kevin frankfurter...",
+//       image_url: "http://placekitten.com/200/",
+//     },
+//   ][Math.round(Math.random(5))];
 
-  return {
-    results: data,
-  };
-};
+//   return {
+//     results: data,
+//   };
+// };
 
 // ========================================================
 // Async
