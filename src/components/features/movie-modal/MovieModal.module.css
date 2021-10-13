@@ -1,3 +1,34 @@
+.root {
+  height: calc(100vh - var(--space-two) * 2);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .content {
   position: relative;
+}
+
+.date {
+  color: var(--color-dark-temp);
+  opacity: 0.6;
+
+  font-size: var(--font-size-m);
+}
+
+.summary {
+  margin: var(--space-one) 0;
+
+  color: var(--color-dark-temp);
+  font-size: var(--font-size-n);
+}
+
+.details {
+  color: var(--color-dark-temp);
+  opacity: 0.8;
+
+  font-size: var(--font-size-n);
+}
+
+.image {
+  box-shadow: 0 0 7px -2px var(--color-theme-temp);
 }

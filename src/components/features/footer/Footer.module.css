@@ -1,0 +1,15 @@
+.root.root {
+  background: var(--color-dark-temp);
+  color: var(--color-light-temp);
+}
+
+.content {
+  font-size: var(--font-size-m);
+  text-align: center;
+  opacity: .5;
+}
+
+.content a {
+  color: var(--color-light-temp);
+  text-decoration: underline;
+}

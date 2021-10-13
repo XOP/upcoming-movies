@@ -95,17 +95,17 @@ export const fetchMovieList = createAsyncThunk(
   "app/fetch",
   async (data, { rejectWithValue }) => {
     try {
-      // const response = await fetch(movieListApi.get(API_EP), {
-      //   method: "GET",
-      //   headers: {
-      //     "x-rapidapi-host": movieListApi.get(API_HOST),
-      //     "x-rapidapi-key": movieListApi.get(API_KEY),
-      //   },
-      // });
+      const response = await fetch(movieListApi.get(API_EP), {
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": movieListApi.get(API_HOST),
+          "x-rapidapi-key": movieListApi.get(API_KEY),
+        },
+      });
 
-      // const data = await response.json();
+      const data = await response.json();
 
-      const data = await mockFetch(mockMovieList, 500);
+      // const data = await mockFetch(mockMovieList, 500);
       
       const list = data[movieListApi.get(DATA_KEY)];
       const listSize = list.length;
@@ -120,17 +120,17 @@ export const fetchMovieList = createAsyncThunk(
 
       const finalMovieData = await Promise.allSettled(
         movieData.map(async (item) => {
-          // const response = await fetch(`${movieDetailsApi.get(API_EP)}${item.id}/`, {
-          //   method: "GET",
-          //   headers: {
-          //     "x-rapidapi-host": movieDetailsApi.get(API_HOST),
-          //     "x-rapidapi-key": movieDetailsApi.get(API_KEY),
-          //   },
-          // });
+          const response = await fetch(`${movieDetailsApi.get(API_EP)}${item.id}/`, {
+            method: "GET",
+            headers: {
+              "x-rapidapi-host": movieDetailsApi.get(API_HOST),
+              "x-rapidapi-key": movieDetailsApi.get(API_KEY),
+            },
+          });
 
-          // const data = await response.json();
+          const data = await response.json();
 
-          const data = await mockFetch(mockMovieDetails, 1000);
+          // const data = await mockFetch(mockMovieDetails, 1000);
 
           const details = data[movieDetailsApi.get(DATA_KEY)];
 

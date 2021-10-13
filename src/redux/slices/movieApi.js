@@ -32,7 +32,11 @@ export const api = createApi({
   reducerPath: "movieApi",
   endpoints: (build) => ({
     getMovie: build.query({
-      query: (id) => `/${id}`,
+      query: (id) => ({
+        url: `/${id}`,
+        method: 'GET',
+        redirect: 'follow'
+      }),
       transformResponse: (response) => createMovieData(response),
     }),
   }),

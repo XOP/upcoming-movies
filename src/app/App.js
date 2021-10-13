@@ -1,7 +1,8 @@
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import Heading from "wombat/dist/components/heading/Heading";
+import { Header } from '../components/features/header/Header';
+import { Footer } from '../components/features/footer/Footer';
 
 import AppRouter from "../routes/AppRouter";
 import store from "../redux/configure";
@@ -13,13 +14,10 @@ const App = () => {
     <Provider store={store}>
       <Router basename={window.location.pathname || ""}>
         <div className={styles.app}>
-          <header>
-            <Heading level="2" as="h1" mt="1" mb="1">
-              Coming up...
-            </Heading>
-          </header>
+          <Header />
           <AppRouter />
         </div>
+        <Footer />
       </Router>
     </Provider>
   );

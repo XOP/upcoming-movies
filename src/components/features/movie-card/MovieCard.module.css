@@ -25,39 +25,15 @@
 
   font-size: var(--font-size-m);
   text-align: right;
-}
 
-.media {
-  display: flex;
-  flex-direction: row;
-}
-
-.media-left {
-  flex: 1 1 50%;
-  max-width: 16rem;
-}
-
-.media-right {
-  flex: 1 1 50%;
-  padding: var(--space-quarter) 0;
-  padding-left: var(--space-one-and-half);
-}
-
-.picture {
-  display: block;
-  overflow: hidden;
-  border-radius: var(--radius-regular);
-  font-size: 0;
-}
-
-.image {
-  object-fit: cover;
-  width: 100%;
-  height: 30vh;
-  min-height: 12rem;
-  max-height: 18rem;
+  color: var(--color-dark-temp);
+  opacity: 0.6;
 }
 
 .description {
   font-size: var(--font-size-n);
+}
+
+.image {
+  box-shadow: 0 0 7px -2px var(--color-theme-temp);
 }
