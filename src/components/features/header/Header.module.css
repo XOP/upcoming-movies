@@ -2,3 +2,7 @@
   background: var(--color-theme-temp);
 }
 
+.logo {
+  height: var(--font-size-xl);
+}
+
