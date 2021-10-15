@@ -1,15 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { STATUS } from "../global";
-
 // ========================================================
 // Setup
 // ========================================================
 
-const initialState = {
-  status: STATUS.idle,
-  error: null,
-};
+const initialState = {};
 
 // ========================================================
 // Slice
@@ -21,5 +16,12 @@ export const movieSlice = createSlice({
   reducers: {},
   extraReducers: {},
 });
+
+export const movieSelector = (state, id) => {
+  const movieList = state.app.movieList;
+  const movie = movieList.find(m => m.id === id);
+
+  return movie;
+};
 
 export default movieSlice.reducer;

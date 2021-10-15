@@ -1,17 +1,32 @@
-import { useDispatch } from "react-redux";
-import { useParams, useLocation, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
 
 import { routeNames } from "../../routes/routes";
-import { MovieModal } from "../../components/features/movie-modal/MovieModal";
-import { modalToggle } from "../../redux/slices/appSlice";
-
+import { modalToggle, statusSelector } from "../../redux/slices/appSlice";
 import { useGetMovieQuery } from "../../redux/slices/movieApi";
+import { movieSelector } from "../../redux/slices/movieSlice";
+import { STATUS } from "../../redux/global";
+
+import { MovieModal } from "../../components/features/movie-modal/MovieModal";
+
+import { parseDate } from "../../utils/date";
 
 const MovieView = () => {
   let { movie } = useParams();
-  let { state } = useLocation();
 
-  const { title, releaseDate } = state;
+  const appStatus = useSelector(statusSelector);
+  const movieData = useSelector((state) => movieSelector(state, movie));
+
+  const isAppLoading = appStatus === STATUS.loading || appStatus === STATUS.init;
+  const isAppError = appStatus === STATUS.error;
+
+  let title = '...';
+  let releaseDate = '...';
+
+  if (movieData) {
+    title = movieData.title;
+    releaseDate = parseDate(movieData.releaseDate);
+  }
 
   const { data = {}, isLoading, isError } = useGetMovieQuery(movie);
   const { length, contentRating, imgSrc, summary, castStars, trailer } = data;
@@ -35,8 +50,8 @@ const MovieView = () => {
       summary={summary}
       castStars={castStars}
       trailer={trailer}
-      isLoading={isLoading}
-      isError={isError}
+      isLoading={isLoading || isAppLoading}
+      isError={isError || isAppError}
       isOpen={true}
       onClose={handleModalClose}
     />

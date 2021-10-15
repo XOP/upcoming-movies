@@ -137,6 +137,7 @@ export const fetchMovieList = createAsyncThunk(
           const details = data[movieDetailsApi.get(DATA_KEY)];
 
           // taking care of some API discrepancies
+          // unfortunately some proper urls still won't work
           const imgSrc =
             details.image_url.indexOf("http") === -1
               ? ""

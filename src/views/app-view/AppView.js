@@ -6,10 +6,10 @@ import Hold from "choom/lib/components/layout/Hold";
 import Loader from "choom/lib/components/loader/Loader";
 
 import { routeNames, createRoute } from "../../routes/routes";
+import { parseDate, parseDateMonth } from "../../utils/date";
+import { STATUS } from "../../redux/global";
 
 import { MovieCard } from "../../components/features/movie-card/MovieCard";
-
-import { STATUS } from "../../redux/global";
 
 import {
   fetchMovieList,
@@ -38,17 +38,8 @@ const AppView = () => {
       {appStatus === STATUS.idle &&
         !!movieList.length &&
         movieList.map((item) => {
-          const date = new Date(item.releaseDate);
-          const parsedReleaseDate = date.toLocaleString("en-GB", {
-            weekday: undefined,
-            month: "long",
-            day: "2-digit",
-            year: "numeric",
-          });
-
-          const releaseMonth = date.toLocaleString("en-GB", {
-            month: "long",
-          });
+          const parsedReleaseDate = parseDate(item.releaseDate);
+          const releaseMonth = parseDateMonth(item.releaseDate);
 
           let month = null;
 
@@ -72,11 +63,6 @@ const AppView = () => {
                 releaseDate={parsedReleaseDate}
                 linkTo={{
                   pathname: createRoute(routeNames.ITEM, item.id),
-                  state: {
-                    id: item.id,
-                    title: item.title,
-                    releaseDate: parsedReleaseDate,
-                  },
                 }}
                 onClick={() => dispatch(modalToggle(true))}
               />

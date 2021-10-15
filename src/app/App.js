@@ -12,7 +12,7 @@ import styles from "./App.module.css";
 const App = () => {
   return (
     <Provider store={store}>
-      <Router basename={window.location.pathname || ""}>
+      <Router>
         <div className={styles.app}>
           <Header />
           <AppRouter />
