@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/movie/:id*", "destination": "/:id*" }
+  ]
+}
