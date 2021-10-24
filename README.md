@@ -19,6 +19,8 @@ choice of APIs and development solutions are exaggerated on purpose.
 - [Choom](https://www.npmjs.com/package/choom)
 - [Rapid API](https://rapidapi.com/) 
 - [IMDb API](https://imdb-api.com/api)
+- [MongoDB](https://www.mongodb.com/)
+- [Vercel Serverless Functions](https://vercel.com/)
 
 ## Extra resources
 
@@ -40,6 +42,16 @@ REACT_APP_RAPIDAPI_KEY = xxxxx
 
 # IMDb API
 REACT_APP_IMDBAPI_KEY = xxxxx
+
+# list size
+REACT_APP_ITEM_LIMIT = 5
+
+# DB settings
+COMING_UP_MONGODB_ID = xxxxx
+COMING_UP_MONGODB_COLLECTION = xxxxx
+COMING_UP_MONGODB_PATH = xxxxx.mongodb.net
+COMING_UP_MONGODB_USER = xxxxx
+COMING_UP_MONGODB_PWD = xxxxx
 ```
 
 ### Theming

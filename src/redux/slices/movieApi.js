@@ -1,6 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createAction } from "@reduxjs/toolkit";
 
 import { API_EP, API_KEY } from "../utils";
+
+export const movieDataLoaded = createAction("movie/data");
 
 const movieDataApi = new Map([
   [API_EP, "https://imdb-api.com/en/API/Title"],
@@ -32,12 +35,29 @@ export const api = createApi({
   reducerPath: "movieApi",
   endpoints: (build) => ({
     getMovie: build.query({
-      query: (id) => ({
-        url: `/${id}`,
-        method: 'GET',
-        redirect: 'follow'
-      }),
+      query: (id) => {
+        // console.log('Fetching from IMDB api', id);
+
+        return {
+          url: `/${id}`,
+          method: "GET",
+          redirect: "follow",
+        };
+      },
       transformResponse: (response) => createMovieData(response),
+
+      // requested item goes to DB
+      async onCacheEntryAdded(id, { dispatch, cacheDataLoaded }) {
+        const response = await cacheDataLoaded;
+        const data = response.data;
+
+        dispatch(
+          movieDataLoaded({
+            id,
+            ...data,
+          })
+        );
+      },
     }),
   }),
 });

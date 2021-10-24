@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+import axios from 'axios';
+
 import { STATUS, LIST_LIMIT } from "../global";
 import { API_EP, API_HOST, API_KEY, DATA_KEY } from "../utils";
 
@@ -97,15 +99,14 @@ export const fetchMovieList = createAsyncThunk(
   "app/fetch",
   async (data, { rejectWithValue }) => {
     try {
-      const response = await fetch(movieListApi.get(API_EP), {
-        method: "GET",
+      const response = await axios.get(movieListApi.get(API_EP), {
         headers: {
           "x-rapidapi-host": movieListApi.get(API_HOST),
           "x-rapidapi-key": movieListApi.get(API_KEY),
         },
       });
 
-      const data = await response.json();
+      const data = await response.data;
 
       // const data = await mockFetch(mockMovieList, 500);
       
@@ -122,15 +123,14 @@ export const fetchMovieList = createAsyncThunk(
 
       const finalMovieData = await Promise.allSettled(
         movieData.map(async (item) => {
-          const response = await fetch(`${movieDetailsApi.get(API_EP)}${item.id}/`, {
-            method: "GET",
+          const response = await axios.get(`${movieDetailsApi.get(API_EP)}${item.id}/`, {
             headers: {
               "x-rapidapi-host": movieDetailsApi.get(API_HOST),
               "x-rapidapi-key": movieDetailsApi.get(API_KEY),
             },
           });
 
-          const data = await response.json();
+          const data = await response.data;
 
           // const data = await mockFetch(mockMovieDetails, 1000);
 
@@ -188,7 +188,7 @@ export const appSlice = createSlice({
   },
 
   extraReducers: {
-    [fetchMovieList.pending]: (state, action) => {
+    [fetchMovieList.pending]: (state) => {
       state.status = STATUS.loading;
     },
 

@@ -58,13 +58,15 @@ const MovieModal = ({
             <Media
               align="start"
               start={
-                <Picture
-                  src={imgSrc}
-                  alt={title}
-                  width="12rem"
-                  aspectRatio="3:4"
-                  className={styles.image}
-                />
+                imgSrc && (
+                  <Picture
+                    src={imgSrc}
+                    alt={title}
+                    width="12rem"
+                    aspectRatio="3:4"
+                    className={styles.image}
+                  />
+                )
               }
               space="1.5"
             >
