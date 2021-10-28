@@ -48,7 +48,9 @@ const MovieView = () => {
     dispatch(fetchCache(movie));
   }, [dispatch, movie]);
 
-  const movieQuery = useGetMovieQuery(movie, { skip: hasMovieCache });
+  // it's a bit too much to pass all data
+  // but it's a trade-off for APIs inconsistencies
+  const movieQuery = useGetMovieQuery(movieData, { skip: hasMovieCache });
   const { isLoading, isError } = movieQuery;
 
   let data = {};

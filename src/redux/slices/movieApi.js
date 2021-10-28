@@ -35,7 +35,7 @@ export const api = createApi({
   reducerPath: "movieApi",
   endpoints: (build) => ({
     getMovie: build.query({
-      query: (id) => {
+      query: ({id}) => {
         // console.log('Fetching from IMDB api', id);
 
         return {
@@ -47,13 +47,14 @@ export const api = createApi({
       transformResponse: (response) => createMovieData(response),
 
       // requested item goes to DB
-      async onCacheEntryAdded(id, { dispatch, cacheDataLoaded }) {
+      async onCacheEntryAdded({ id, releaseDate }, { dispatch, cacheDataLoaded }) {
         const response = await cacheDataLoaded;
         const data = response.data;
 
         dispatch(
           movieDataLoaded({
             id,
+            releaseDate,
             ...data,
           })
         );

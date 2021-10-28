@@ -18,7 +18,7 @@ const Footer = () => {
           Data-Imdb
         </a> and <a href="https://imdb-api.com/">IMDb-API</a>
         <br />
-        <a href="https://github.com/XOP/upcoming-movies">XOP</a>, 2021
+        Keeping track of releases since November 2021 | <a href="https://github.com/XOP/upcoming-movies">XOP</a>, 2021
       </div>
     </Panel>
   );
