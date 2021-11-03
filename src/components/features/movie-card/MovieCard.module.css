@@ -37,3 +37,9 @@
 .image {
   box-shadow: 0 0 7px -2px var(--color-theme-temp);
 }
+
+@media (hover: hover) {
+  .image:hover {
+    cursor: pointer;
+  }
+}
