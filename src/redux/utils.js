@@ -1,4 +1,5 @@
 export const API_EP = 'endpoint';
+export const API_PARAMS = 'params';
 export const API_KEY = 'key';
 export const API_HOST = 'host';
 export const DATA_KEY = 'dataKey';

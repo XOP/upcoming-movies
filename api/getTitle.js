@@ -1,4 +1,4 @@
-const { MongoClient } = require("mongodb");
+const { MongoClient, ServerApiVersion } = require("mongodb");
 
 let _id = process.env.COMING_UP_MONGODB_ID;
 let _coll = process.env.COMING_UP_MONGODB_COLLECTION;
@@ -11,6 +11,7 @@ const uri = `mongodb+srv://${user}:${pass}@${path}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  serverApi: ServerApiVersion.v1
 });
 
 const handler = async function handler(req, res) {
