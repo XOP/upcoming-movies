@@ -11,7 +11,7 @@ const uri = `mongodb+srv://${user}:${pass}@${path}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  serverApi: ServerApiVersion.v1
+  serverApi: ServerApiVersion.v1,
 });
 
 const handler = async function handler(req, res) {
@@ -21,13 +21,17 @@ const handler = async function handler(req, res) {
     return res.status(400).send({ error: 'Bad Request' });
   }
 
-  await client.connect();
+  try {
+    await client.connect();
 
-  const db = client.db(_id);
-  const coll = db.collection(_coll);
-  const data = await coll.find({ id }).toArray();
-
-  res.send(data);
+    const db = client.db(_id);
+    const coll = db.collection(_coll);
+    const data = await coll.find({ id }).toArray();
+  
+    res.send(data);
+  } finally {
+    client.close();
+  }
 }
 
 module.exports = handler;

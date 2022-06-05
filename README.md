@@ -46,6 +46,9 @@ REACT_APP_IMDBAPI_KEY = xxxxx
 # list size
 REACT_APP_ITEM_LIMIT = 5
 
+# list size cap
+REACT_APP_ITEM_CAP = 20
+
 # DB settings
 COMING_UP_MONGODB_ID = xxxxx
 COMING_UP_MONGODB_COLLECTION = xxxxx
