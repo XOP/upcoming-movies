@@ -14,8 +14,8 @@ import { API_EP, API_HOST, API_KEY, API_PARAMS, DATA_KEY } from "../utils";
 const currentYear = new Date().getFullYear();
 
 const movieListApi = new Map([
-  [API_HOST, "data-imdb1.p.rapidapi.com"],
-  [API_EP, "https://data-imdb1.p.rapidapi.com/titles/x/upcoming/"],
+  [API_HOST, "moviesdatabase.p.rapidapi.com"],
+  [API_EP, "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming/"],
   [API_PARAMS, {
     titleType: "movie",
     info: "mini_info",
@@ -28,8 +28,8 @@ const movieListApi = new Map([
 ]);
 
 const movieDetailsApi = new Map([
-  [API_HOST, "data-imdb1.p.rapidapi.com"],
-  [API_EP, "https://data-imdb1.p.rapidapi.com/titles/"],
+  [API_HOST, "moviesdatabase.p.rapidapi.com"],
+  [API_EP, "https://moviesdatabase.p.rapidapi.com/titles/"],
   [API_PARAMS, {
     info: "base_info",
   }],
